@@ -1,0 +1,84 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
+\usepackage{palatino}
+\usepackage{tabularx}
+\usepackage{array}
+
+\def\tbf{\textbf}
+\def\sml#1{\small{#1}\normalsize}
+\def\lrg#1{\large\textbf{#1}\normalsize}
+\def\LRG#1{\Large\textbf{#1}\normalsize}
+
+\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\bigskip}
+\def\open#1{\noindent\begin{tabularx}{\textwidth}{#1}}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+
+\begin{document}
+
+\open{L C R}
+ &                      & \sml{Phone: +7(904)856-51-29} \\
+ & \LRG{Andrey Tonkikh} & \sml{Email: xosmig@gmail.com} \\
+ &                      & \sml{github profile: xosmig} \\
+\end{tabularx}
+
+\headline{Education}
+
+\open{L C R}
+\tbf{Saint Petersburg}    & BS in Computer Science & 2015-Present (2 year) \\
+\tbf{Academic University} &                        & GPA: 4.0 / 4.0 \\
+                          &                        & Graduating May 2019 \\
+\end{tabularx}
+
+\headline{Languages}
+
+In descending order of current experience: \\
+C++, Rust, Java, Haskell, Python, Kotlin
+
+%\open{c l}
+%\lrg{language:} & \lrg{experience:}  \\
+%            & \\
+%Rust            & \\
+%C++             & \\
+%Haskell         & \\
+%Python          & \\
+%FIXME: ?Kotlin  & \\
+%FIXME: ?SML     & \\
+%\end{tabularx}
+
+\headline{Technologies}
+
+Git, Unix/Linux, Libgdx game framework (Java)
+
+\headline{Projects}
+
+\open{L L}
+\tbf{Ghost Revenge}       &  \\
+\tbf{Academic University} &                        & GPA: 4.0 / 4.0 \\
+                          &                        & Graduating May 2019 \\
+\end{tabularx}
+
+ghost with gun
+
+blackout (with a fellow student)
+
+hwformat
+
+xo\_os
+
+\headline{Open source activity}
+
+rust (data structures: binary heap, BTree)
+
+\headline{FIXME: спортивное программирование}
+
+TODO: SIS
+
+\headline{Courses}
+
+FIXME: should be removed
+
+\end{document}
