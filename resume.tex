@@ -5,9 +5,10 @@
 \usepackage{array}
 
 \def\tbf{\textbf}
+\def\ttt{\texttt}
 \def\sml#1{\small{#1}\normalsize}
 \def\lrg#1{\large\textbf{#1}\normalsize}
-\def\LRG#1{\Large\textbf{#1}\normalsize}
+\def\LRG#1{\LARGE\textbf{#1}\normalsize}
 
 \def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\bigskip}
 \def\open#1{\noindent\begin{tabularx}{\textwidth}{#1}}
@@ -20,65 +21,67 @@
 \begin{document}
 
 \open{L C R}
- &                      & \sml{Phone: +7(904)856-51-29} \\
- & \LRG{Andrey Tonkikh} & \sml{Email: xosmig@gmail.com} \\
- &                      & \sml{github profile: xosmig} \\
+Phone: +7(904)856-51-29 & \LRG{Andrey Tonkikh}  & github profile: xosmig \\
+Email: xosmig@gmail.com &                       & codeforces profile: xosmig \\
 \end{tabularx}
 
 \headline{Education}
 
 \open{L C R}
 \tbf{Saint Petersburg}    & BS in Computer Science & 2015-Present (2 year) \\
-\tbf{Academic University} &                        & GPA: 4.0 / 4.0 \\
+\tbf{Academic University} &                        & Overall GPA: 4.0 / 4.0 \\
                           &                        & Graduating May 2019 \\
 \end{tabularx}
 
-\headline{Languages}
+\headline{Programming languages}
 
-In descending order of current experience: \\
-C++, Rust, Java, Haskell, Python, Kotlin
-
-%\open{c l}
-%\lrg{language:} & \lrg{experience:}  \\
-%            & \\
-%Rust            & \\
-%C++             & \\
-%Haskell         & \\
-%Python          & \\
-%FIXME: ?Kotlin  & \\
-%FIXME: ?SML     & \\
-%\end{tabularx}
+\open{c L}
+\tbf{Confident in:}       & C++, Rust \\
+\tbf{Currently learning:} & Java, Haskell \\
+\tbf{Small experience:}   & Python, Kotlin (I like this language and I hope I will start learning it soon) \\
+\end{tabularx}
+\smallskip
 
 \headline{Technologies}
 
 Git, Unix/Linux, Libgdx game framework (Java)
+\smallskip
 
 \headline{Projects}
 
-\open{L L}
-\tbf{Ghost Revenge}       &  \\
-\tbf{Academic University} &                        & GPA: 4.0 / 4.0 \\
-                          &                        & Graduating May 2019 \\
+\open{c L}
+\tbf{Ghost Revenge} & A game for Android. Not a big game, just my first experience in game development
+                      and my first release in Google play market. \\[5pt]
+\tbf{Blackout}      & An open-source multiplayer 3D game for Android with good physics.
+                      Not released yet. I'm currently working on it with a fellow student. \\[5pt]
+\tbf{Hwformat}      & Pre-processor for latex which makes it easier for writing small mathematical texts.
+                      Mainly for Russian language. Based on regular expressions. \\[5pt]
+\tbf{xo\_os}        & An educational project in the university. Small x86-64 kernel written in Rust. \\[5pt]
 \end{tabularx}
+\smallskip
 
-ghost with gun
+\headline{Open source experience}
 
-blackout (with a fellow student)
+\noindent
+I have several merged pull requests to Rust's standard library:
+\medskip
 
-hwformat
+\open{l L}
+\tbf{std::BinaryHeap}   & \ttt{append} method (merge two binary heaps in optimal time).
+                          Wasn't really hard. Just a first experience \\[5pt]
+\tbf{std::BTreeMap} and & \ttt{append} method (merge two BTrees in optimal time). And \ttt{split\_off} \\
+\tbf{std::BTreeSet}     & method. Both are in a stable release now. TODO: quantify your work. \\[5pt]
+\end{tabularx}
+\smallskip
 
-xo\_os
+\headline{Other experience}
 
-\headline{Open source activity}
-
-rust (data structures: binary heap, BTree)
-
-\headline{FIXME: спортивное программирование}
+TODO: olympiads (and mathematical too)
 
 TODO: SIS
 
-\headline{Courses}
+TODO: teacher in Barnaul gymnasium \#42
 
-FIXME: should be removed
+TODO: ctf
 
 \end{document}
