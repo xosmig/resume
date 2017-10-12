@@ -14,9 +14,8 @@
 \def\ttt{\texttt}
 \def\sml#1{\small{#1}\normalsize}
 \def\lrg#1{\large\textbf{#1}\normalsize}
-\def\LRG#1{\LARGE\textbf{#1}\normalsize}
 
-\def\headline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\bigskip}
+\def\headline#1{\medskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\bigskip}
 
 % begin a tabularx without indentation
 \def\tabx#1{\noindent\begin{tabularx}{\textwidth}{#1}}
@@ -27,20 +26,21 @@
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 \def\phone{\includegraphics[width=10pt]{phone.png} \ }
-\def\email{\includegraphics[width=10pt]{gmail.png} \ }
+\def\email{\includegraphics[width=10pt]{mail.png} \ }
 \def\github{\includegraphics[width=10pt]{github.png} \ }
-\def\codeforces{\includegraphics[width=10pt]{codeforces.png} \ }
+\def\codeforces{\includegraphics[width=10pt]{codeforces_bw.png} \ }
 
 % links:
 \def\xosmigGh{\lnk{https://github.com/xosmig}{black}{xosmig}}
 \def\xosmigCf{\lnk{http://codeforces.com/profile/xosmig}{black}{xosmig}}
 
 \def\blackout{\lnk{https://github.com/niksaz/blackout}{blue}{(github)}}
+\def\blackoutdemo{\lnk{https://www.youtube.com/watch?v=0VuFQBdPXMM}{blue}{(demo video)}}
 \def\hwformat{\lnk{https://github.com/xosmig/hwformat}{blue}{(github)}}
 \def\xoos{\lnk{https://github.com/xosmig/xo_os}{blue}{(github)}}
 
-\def\bheap{\lnk{https://github.com/rust-lang/rust/pull/32987}{blue}{(pull request)}}
-\def\btree{\lnk{https://github.com/rust-lang/rust/pull/33947}{blue}{(pull request)}}
+\def\splitoffpr{\lnk{https://github.com/rust-lang/rust/pull/33947}{blue}{(split\_off for BTreeSet and BTreeMap)}}
+\def\appendpr{\lnk{https://github.com/rust-lang/rust/pull/32987}{blue}{(BinaryHeap::append)}}
 
 \begin{document}
 
@@ -48,74 +48,79 @@
 \clearpage
 \thispagestyle{empty}
 
-\tabx{L C L}
-\phone Phone: \tbf{+7(904)856-51-29} & \LRG{Andrei Tonkikh}  & \github      github profile: \xosmigGh \\
-\email Email: \tbf{xosmig@gmail.com} &                       & \codeforces  codeforces profile: \xosmigCf \\
+\begin{center} {\LARGE \textbf{Andrei Tonkikh}} \end{center}
+
+\tabx {l C l}
+\phone Phone: \tbf{+7(904)856-51-29}                && \github github profile: \xosmigGh \\
+\email Email: \tbf{andrei.tonkikh@gmail.com} && \codeforces  codeforces profile: \xosmigCf \\
 \end{tabularx}
 
 \headline{Education}
 
 \tabx{L C R}
-\tbf{Saint Petersburg}    & BS in Computer Science & 2015-Present (2 year) \\
-\tbf{Academic University} &                        & Graduating August 2019 \\
+\tbf{Saint Petersburg}    & BS in Computer Science  & 2015-Present (3rd year) \\
+\tbf{Academic University} & Cloud Computing         & Graduating July 2019 \\
 \end{tabularx}
 
-\headline{Programming languages}
+\headline{Programming Languages}
 
-C++, Rust, Haskell, Java, Kotlin
-\smallskip
+\tabx{c L}
+\tbf{Currently using:}      & Kotlin, C++, Go \\
+\tbf{Well familiar with:}   & Java, Rust, Bash, Haskell \\
+\tbf{Had some experience:}  & Scala, Python \\
+\end{tabularx}
 
-\headline{Technologies}
+\headline{Internship Experience}
 
-Git, Unix/Linux, Libgdx game framework (Java)
-\smallskip
+\tabx{l L}
+\tbf{Google SRE}  & I was part of cloudnet shard of traffic team SRE in London for three months \\
+\tbf{intern}      & in the summer of 2017. I was working on improving the monitoring system for
+                    Google Cloud Engine. \\
+\end{tabularx}
+
+\headline{Open Source Experience}
+
+\tabx{l L}
+\tbf{Rust standard library} & I made several pull requests to Rust's standard collections library. \\
+                            & \splitoffpr, \appendpr \\
+                            & All the methods I implemented are now in the stable release. \\[7pt]
+
+\tbf{vSphere plugin for}    & Currently working on support of creating new VMs from Packer \\
+\tbf{Hashicorp Packer}      & in VMware vSphere. \\
+\end{tabularx}
 
 \headline{Projects}
 
 \tabx{c L}
-\tbf{Ghost Revenge} & A small game for Android. My first experience in game development and my \\
-                    & first release in Google play market. \\[7pt]
-\tbf{Blackout}      & An open-source multiplayer 3D action game for Android. Not released yet. \\
-\blackout           & \\[7pt]
-\tbf{Hwformat}      & Pre-processor for latex, which makes writing small mathematical texts in \\
-\hwformat           & Russian language easier. Based on regular expressions. \\[7pt]
-\tbf{xo\_os}        & An educational project at university. Small x86-64 OS-kernel written in Rust.\\
-\xoos               & \\
-\end{tabularx}
-\smallskip
+\tbf{Blackout}    & An open-source multiplayer 3D action game for Android. Written in Java using \\
+\blackout         & libGDX framework. In this project, I first encountered problems such as \\
+\blackoutdemo     & synchronization and complex real-time client-server interaction. \\[7pt]
 
-\headline{Open source experience}
+\tbf{xo\_os}      & Educational project. Small x86-64 OS kernel written in Rust. \\
+\xoos             & Supports memory allocation and threads. \\[7pt]
 
-\noindent
-I've had several pull requests to \tbf{Rust}'s standard collections library:
-\medskip
-
-\tabx{l L}
-\tbf{BinaryHeap}    & \ttt{append} method (merges two binary heaps in optimal time). My first \\
-\bheap              & experience, which wasn't complicated. \\[7pt]
-\tbf{BTreeMap} and  & \ttt{split\_off} method (splits the tree into two at the given key). It was much more \\
-\tbf{BTreeSet}      & challenging than the previous one. \\
-\btree              & \\
+\tbf{Hwformat}    & A small pre-processor for latex, that makes writing small mathematical texts \\
+\hwformat         & in Russian language easier. Written in Python. \\
 \end{tabularx}
 
-\smallskip
-\noindent
-All the methods I've implemented have been successfully stabilized.
-\smallskip
-
-\headline{Other experience}
+\headline{Other Experience}
 
 \tabx{l L}
-\tbf{Programming} & In high school I participated in many programming contests and was awarded  \\
-\tbf{contests}    & in many important Russian programming olympiads like
+\tbf{Linux}       & I've been using linux as the main operating system for more than 4 years.
+                    Took a course on linux administration.
+                    Currently taking a course on programming in linux kernel. \\[7pt]
+
+\tbf{Programming} & In high school I participated in many programming contests and was awarded \\
+\tbf{contests}    & in many major Russian programming olympiads like
                     "All-Russian Olympiad of School Students in Informatics"
-                    and "Open Programming Olympiad". But now I prefer to spend my time on
-                    developing my engineering skills. \\[7pt]
+                    and "Open Programming Olympiad". \\
+                  &  Although now I prefer to spend time on developing my engineering skills,
+                    I appreciate the experience of programming contests since it gave me good
+                    skills in algorithms. \\[7pt]
+
 \tbf{Teaching}    & I like teaching and I was a teacher in "Summer Informatics School" for a month.
                     This is a summer school for high school students who want to learn more
                     about programming and algorithms. \\[7pt]
-\tbf{Altai CTF}   & My team was awarded in "Altai CTF" -- an information security competition for univesity students
-                    (actually, we still were in high school unlike most of our competitors). \\
 \end{tabularx}
 
 \end{document}
