@@ -1,8 +1,9 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[8pt,a4paper]{article}
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{graphicx}
+\usepackage{fix-cm}
 
 %
 \usepackage{xcolor}
@@ -47,17 +48,25 @@
 
 \def\subitem{\vspace{-2pt}\item}
 
-\def\phone{\includegraphics[width=10pt]{phone.png} \ }
-\def\email{\includegraphics[width=10pt]{mail.png} \ }
-\def\github{\includegraphics[width=10pt]{github.png} \ }
-\def\codeforces{\includegraphics[width=10pt]{codeforces_bw.png} \ }
+\def\phone{\includegraphics[height=10pt]{phone.png}\space\space}
+\def\email{\includegraphics[height=10pt]{mail.png}\space\space}
+\def\github{\includegraphics[height=10pt]{github.png}\space\space}
+\def\codeforces{\includegraphics[height=10pt]{codeforces_bw.png}\space\space}
+\def\linkedin{\includegraphics[height=10pt]{linkedin.png}\space\space}
 
 % links:
 \def\andreiTonkikhGmail{\href{mailto:andrei.tonkikh@gmail.com}{\textcolor{black}{\tbf{andrei.tonkikh@gmail.com}}}}
 \def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
 \def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
+\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
 
-\def\Google{\textcolor{G}\textcolor{red}{o}\textcolor{yellow}{o}\textcolor{g}\textcolor{green}{l}\textcolor{red}{e}}
+\makeatletter
+\DeclareRobustCommand{\regmark}{\raisebox{1ex}{%
+  \fontsize{.4\dimexpr\f@size pt}\z@\selectfont\textregistered}%
+}
+\makeatother
+
+\newcommand{\comment}[1]{}
 
 \begin{document}
 
@@ -68,8 +77,8 @@
 \begin{center} {\LARGE \textbf{Andrei Tonkikh}} \end{center}
 
 \tabx {l C l}
-\phone Phone: \tbf{+7(904)856-51-29}         && \github github profile: \xosmigGh \\
-\email Email: \andreiTonkikhGmail && \codeforces  codeforces profile: \xosmigCf \\
+\phone Phone: \tbf{+7(904)856-51-29}        && \github GitHub profile: \xosmigGh \\
+\email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\comment{\regmark\space} profile: \meAtLinkedIn \\
 \end{tabularx}
 
 \headline{Summary}
@@ -83,6 +92,24 @@ My long term goal is to become a researcher in distributed systems or multiproce
 
 \headline{Education}
 \vspace{-9pt}
+
+\begin{center}
+  \begin{minipage}[t]{0.33333\textwidth}
+    \raggedright
+    Higher School of Economics \par
+    Saint-Petersburg, Russia
+  \end{minipage}%
+  \begin{minipage}[t]{0.33333\textwidth}
+    \centering
+    MS in Computer Science
+  \end{minipage}%
+  \begin{minipage}[t]{0.33333\textwidth}
+    \raggedleft
+    Intended \par
+    2019 -- 2021
+  \end{minipage}
+\end{center}
+
 
 \begin{center}
   \begin{minipage}[t]{0.33333\textwidth}
