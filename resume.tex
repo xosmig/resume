@@ -44,9 +44,11 @@
   }
 }
 
-\def\endres{\end{itemize}\vspace{-6pt}}
+\def\endres{\end{itemize}}
 
 \def\subitem{\vspace{-2pt}\item[]}
+
+\def\subitemB{\vspace{-2pt}\item[\textperiodcentered]}
 
 \def\phone{\includegraphics[height=10pt]{phone.png}\space\space}
 \def\email{\includegraphics[height=10pt]{mail.png}\space\space}
@@ -93,25 +95,37 @@ My long term goal is to do reasearch and development in distributed systems and 
   \resTime{St. Petersburg branch of the Higher School of Economics} {2018 -- Present (4th year)}
     \subitem BS in Computer Science (continuing)
     \subitem Graduating July 2019
-  \endres
+  \end{itemize}
 
   \resTime{St. Petersburg Academic University} {2015-2018}
     \subitem BS in Computer Science
-  \endres
+  \end{itemize}
 \endreslist
 
 \vspace{-3pt}
 \headline{Work Experience}
 
 \reslist
+  \resTime{Junior Software Engineer at Yandex} {January 2019 -- Present}
+    \subitem
+    Enhancing job scheduling algorithms for YT.
+    YT is a distributed batch-processing platform based on Map-Reduce paradigm
+    running on many tens of thosands of machines.
+    In particular, I'm trying to deal with the problem of resource underutilization caused by fragmentation.
+  \end{itemize}
+
   \resTime{SWE Intern at Yandex} {July -- December 2018}
-    \subitem Enhancing job scheduling algorithms for YT.
-    YT is a distributed batch-processing platform based on Map-Reduce paradigm.
+    \subitem
+    Investigated the problem of resource fragmentation on YT clusters.
+    Improved and modernized scheduler simulator -- a tool to simulate the traces from the production scheduler and
+    evaluate scheduling strategies.
   \endres
 
   \resTime{SRE Intern at Google} {Summer 2017}
-    \subitem Was part of Cloudnet Shard of Traffic Team SRE in London.
-     Improved observability of Google Cloud Engine.
+    \subitem
+      Was part of Traffic Team SRE in London. Improved observability of Google Cloud Engine.
+      Designed, implemented and integrated a library for
+      reporting statistics from test instances of GCE components.
   \endres
 \endreslist
 
@@ -119,8 +133,8 @@ My long term goal is to do reasearch and development in distributed systems and 
 \headline{Open Source Contribution}
 
 \reslist
-  \resTime{Packer Plugin for vSphere} {Fall 2017}
-    \subitem Automated creating virtual machines and OS installation
+  \resTime{Packer Builder for VMware vSphere} {Fall 2017}
+    \subitem Automated creation of virtual machines and OS installation
       in vSphere environment. The project is in Go language.
     \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
   \endres
@@ -166,11 +180,13 @@ and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action ga
 
 \reslist
   \res{Programming Competitions}
-    \subitem Actively participated and was awarded at many programming competitions in High School.
-    \subitem 8th place in Google HashCode 2018 Finals in Dublin.
+    \subitemB 8th place in Google HashCode 2018 Finals in Dublin.
+  \endres
+  \res{High School Programming Competitions}
+    \subitemB Actively participated and was awarded at many programming competitions in High School.
   \endres
   \res{Teaching}
-    \subitem Taught algorithms and data structures to high school students at ``Summer Informatics School''.
+    \subitemB Taught algorithms and data structures to high school students at ``Summer Informatics School''.
   \endres
 \endreslist
 
