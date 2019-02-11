@@ -32,7 +32,7 @@
 \def\endreslist{\end{itemize}\vspace{-2pt}}
 
 \def\res#1{
-  \item #1\normalsize
+  \item[] #1\normalsize
   \vspace{-6pt}\begin{itemize}
 }
 
@@ -46,7 +46,7 @@
 
 \def\endres{\end{itemize}\vspace{-6pt}}
 
-\def\subitem{\vspace{-2pt}\item}
+\def\subitem{\vspace{-2pt}\item[]}
 
 \def\phone{\includegraphics[height=10pt]{phone.png}\space\space}
 \def\email{\includegraphics[height=10pt]{mail.png}\space\space}
@@ -85,62 +85,33 @@
 
 I am a computer science student fascinated by the topic of distributed systems.
 I am highly interested in multiprocessor programming, operating systems and system programming in general.
-I love to dig into large and complex systems to understand how they work on all levels of abstraction.
-I have experience of production C++ development in an SRE team
-and a team working on a large distributed computing platform.
-My long term goal is to become a researcher in distributed systems or multiprocessor programming.
+My long term goal is to do reasearch and development in distributed systems and multiprocessor programming.
 
 \headline{Education}
-\vspace{-9pt}
-
-\begin{center}
-  \begin{minipage}[t]{0.33333\textwidth}
-    \raggedright
-    Higher School of Economics \par
-    Saint-Petersburg, Russia
-  \end{minipage}%
-  \begin{minipage}[t]{0.33333\textwidth}
-    \centering
-    MS in Computer Science
-  \end{minipage}%
-  \begin{minipage}[t]{0.33333\textwidth}
-    \raggedleft
-    Intended \par
-    2019 -- 2021
-  \end{minipage}
-\end{center}
-
-
-\begin{center}
-  \begin{minipage}[t]{0.33333\textwidth}
-    \raggedright
-    Higher School of Economics \par
-    Moscow, Russia
-  \end{minipage}%
-  \begin{minipage}[t]{0.33333\textwidth}
-    \centering
-    BS in Computer Science \par
-    with focus on \par
-    \textbf{Distributed Systems}
-  \end{minipage}%
-  \begin{minipage}[t]{0.33333\textwidth}
-    \raggedleft
-    4th year \par
-    Graduating July 2019
-  \end{minipage}
-\end{center}
-
-\vspace{-7pt}
-\headline{Internships}
 
 \reslist
-  \resTime{Yandex SWE Intern} {July -- December 2018}
-    \subitem Enhancing job scheduling algorithms for YT -- Yandex's internal distributed computing platform.
+  \resTime{St. Petersburg branch of the Higher School of Economics} {2018 -- Present (4th year)}
+    \subitem BS in Computer Science (continuing)
+    \subitem Graduating July 2019
   \endres
 
-  \resTime{Google SRE Intern} {Summer 2017}
+  \resTime{St. Petersburg Academic University} {2015-2018}
+    \subitem BS in Computer Science
+  \endres
+\endreslist
+
+\vspace{-3pt}
+\headline{Work Experience}
+
+\reslist
+  \resTime{SWE Intern at Yandex} {July -- December 2018}
+    \subitem Enhancing job scheduling algorithms for YT.
+    YT is a distributed batch-processing platform based on Map-Reduce paradigm.
+  \endres
+
+  \resTime{SRE Intern at Google} {Summer 2017}
     \subitem Was part of Cloudnet Shard of Traffic Team SRE in London.
-    \subitem Improved the black box monitoring system for Google Cloud Engine.
+     Improved observability of Google Cloud Engine.
   \endres
 \endreslist
 
@@ -166,7 +137,7 @@ My long term goal is to become a researcher in distributed systems or multiproce
 \headline{Most Relevant University Courses}
 
 \begin{tabular}{c l}
-  \textbf{Fall 2018}   & External Memory Algorithms, Big Data Software Engineering, Machine Learning \\
+  \textbf{Fall 2018}   & External Memory Algorithms, Big Data Software Engineering \\
   \textbf{Spring 2018} & Parallel Programming, Containerization, Computer Networks, Compillers \\
   \textbf{Fall 2017}   & Linux Kernel, Databases, Statistics, Software Engineering \\
   \textbf{2016 -- 17}  & Operating Systems, Functional Programming in Haskell, Java \\
@@ -174,8 +145,8 @@ My long term goal is to become a researcher in distributed systems or multiproce
 \end{tabular}
 
 \medskip
-Courseworks include
-writing my own \href{https://github.com/xosmig/xo_os}{\textit{multi-threaded OS-kernel}}
+Courseworks include, but are not limited to,
+writing \href{https://github.com/xosmig/xo_os}{\textit{multi-threaded OS-kernel}}
   and a simple \href{https://github.com/xosmig/aucont}{\textit{containerization utility}} in Rust,
 creating simple linux kernel modules in C,
 implementing a very basic \href{https://github.com/xosmig/MyLittleMapReduce}{\textit{mapreduce framework}} in Kotlin,
@@ -186,7 +157,7 @@ and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action ga
 
 \tabx{l l}
 \tbf{Strongest:}          & C++, C \\
-\tbf{Comfortable:}        & Go, Kotlin, Java, Rust, Python \\
+\tbf{Comfortable:}        & Go, Kotlin, Java, Rust, Python, Bash \\
 \tbf{Limited Experience:} & Scala, R, Haskell, OCaml \\
 \end{tabularx}
 
@@ -195,12 +166,11 @@ and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action ga
 
 \reslist
   \res{Programming Competitions}
+    \subitem Actively participated and was awarded at many programming competitions in High School.
     \subitem 8th place in Google HashCode 2018 Finals in Dublin.
-    \subitem Awarded in ``All-Russian Olympiad of School Students in Informatics''
-      and many others major Russian programming olympiads for high school students.
   \endres
   \res{Teaching}
-    \subitem Taught high school students basic algorithms in ``Summer Informatics School''.
+    \subitem Taught algorithms and data structures to high school students at ``Summer Informatics School''.
   \endres
 \endreslist
 
