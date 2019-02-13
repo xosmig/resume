@@ -9,6 +9,8 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 
+\usepackage{enumitem} % advanced enumerate, allows me to set leftmargin
+
 \def\lnk#1#2{\href{#1}{\textcolor{blue}{\tbf{\textit{\underline{#2}}}}}}
 
 \def\tbf{\textbf}
@@ -28,8 +30,8 @@
 
 \def\headline#1{\medskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\medskip}
 
-\def\reslist{\vspace{-8pt}\begin{itemize}}
-\def\endreslist{\end{itemize}\vspace{-2pt}}
+\def\reslist{\vspace{-8pt}\begin{enumerate}[leftmargin=0pt]}
+\def\endreslist{\end{enumerate}\vspace{-2pt}}
 
 \def\res#1{
   \item[] #1\normalsize
@@ -38,13 +40,13 @@
 
 \def\resTime#1#2{
   \res {
-    \begin{tabularx}{440pt}{l R}
+    \begin{tabularx}{480pt}{l R}
       \tbf{#1} & \textit{#2} \\
     \end{tabularx}
   }
 }
 
-\def\endres{\end{itemize}}
+\def\endres{\end{itemize}\vspace{-6pt}}
 
 \def\subitem{\vspace{-2pt}\item[]}
 
@@ -85,22 +87,10 @@
 
 \headline{Summary}
 
-%I am a computer science student mostly interested in distributed systems, multiprocessor programming
-%and other kinds of system s
-
 I am a 4th year student studying computer science with focus on cloud computing.
 I'm fascinated by distributed systems and multiprocessor programming
 as well as by other kinds of system software such as operating systems and databases.
-%I have considerable experience of writing production C++-code within large and complex projects ta
 My long term goal is to do research and development in one or several of the above-mentioned areas.
-
-
-%I am a computer science student fascinated by the topic of distributed systems.
-%My main fields of interests are distributed systems
-%% Apart from distributed systems, I am also highly interested in
-%
-% multiprocessor programming, operating systems, databases and system programming in general.
-%My long term goal is to do research and development in distributed systems and multiprocessor programming.
 
 \headline{Education}
 
@@ -115,7 +105,7 @@ My long term goal is to do research and development in one or several of the abo
   \end{itemize}
 \endreslist
 
-\vspace{-3pt}
+\vspace{-8pt}
 \headline{Work Experience}
 
 \reslist
@@ -144,27 +134,9 @@ My long term goal is to do research and development in one or several of the abo
 \endreslist
 
 \vspace{-3pt}
-\headline{Open Source Contribution}
-
-\reslist
-  \resTime{Packer Builder for VMware vSphere} {Fall 2017}
-    \subitem Automated creation of virtual machines and OS installation
-      in vSphere environment. The project is in Go language.
-    \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
-  \endres
-
-  \resTime{Rust Standard Collections Library} {Spring 2016}
-    \subitem Contributed to the implementations of B-Tree and Binary Heap in rust standard library.
-    \subitem
-      \lnk{https://github.com/rust-lang/rust/pull/33947}{github.com/rust-lang/rust/pull/33947}
-      \space and \space
-      \lnk{https://github.com/rust-lang/rust/pull/32987}{github.com/rust-lang/rust/pull/32987}
-  \endres
-\endreslist
-
 \headline{Most Relevant University Courses}
 
-\begin{tabular}{c l}
+\hspace{-14pt}\begin{tabular}{l l}
   \textbf{Fall 2018}   & \tbf{External Memory Algorithms}, Big Data Software Engineering \\
   \textbf{Spring 2018} & \tbf{Parallel Programming}, Containerization, Computer Networks, Compillers \\
   \textbf{Fall 2017}   & \tbf{Linux Kernel}, \tbf{Databases}, Statistics, Software Engineering \\
@@ -183,11 +155,29 @@ and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action ga
 
 \headline{Programming Languages}
 
-\tabx{l l}
+\hspace{-14pt}\begin{tabular}{l l}
 \tbf{Strongest:}          & C++, C \\
 \tbf{Comfortable:}        & Go, Kotlin, Java, Rust, Python, Bash \\
 \tbf{Limited Experience:} & Scala, R, Haskell, OCaml \\
-\end{tabularx}
+\end{tabular}
+
+\headline{Open Source Contribution}
+
+\reslist
+  \resTime{Packer Builder for VMware vSphere} {Fall 2017}
+    \subitem Automated creation of virtual machines and OS installation
+      in vSphere environment.
+    \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
+  \endres
+
+  \resTime{Rust Standard Collections Library} {Spring 2016}
+    \subitem Contributed to the implementations of B-Tree and Binary Heap in rust standard library.
+    \subitem
+      \lnk{https://github.com/rust-lang/rust/pull/33947}{github.com/rust-lang/rust/pull/33947}
+      \space and \space
+      \lnk{https://github.com/rust-lang/rust/pull/32987}{github.com/rust-lang/rust/pull/32987}
+  \endres
+\endreslist
 
 
 %\headline{Other Experience}
