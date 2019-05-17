@@ -4,6 +4,8 @@
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{fix-cm}
+% provides \ul command which is an improved version of \underline
+\usepackage{soul}
 
 %
 \usepackage{xcolor}
@@ -11,7 +13,7 @@
 
 \usepackage{enumitem} % advanced enumerate, allows me to set leftmargin
 
-\def\lnk#1#2{\href{#1}{\textcolor{blue}{\tbf{\textit{\underline{#2}}}}}}
+\def\lnk#1#2{\href{#1}{\textcolor{blue}{\textit{\ul{#2}}}}}
 
 \def\tbf{\textbf}
 \def\ttt{\texttt}
@@ -59,10 +61,15 @@
 \def\linkedin{\includegraphics[height=10pt]{linkedin.png}\space\space}
 
 % links:
-\def\andreiTonkikhGmail{\href{mailto:andrei.tonkikh@gmail.com}{\textcolor{black}{\tbf{andrei.tonkikh@gmail.com}}}}
-\def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
-\def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
-\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
+\def\phoneCallto{\lnk{callto:+79048565129}{+7(904)856-51-29}}
+\def\andreiTonkikhGmail{\lnk{mailto:andrei.tonkikh@gmail.com}{andrei.tonkikh@gmail.com}}
+\def\xosmigGh{\lnk{https://github.com/xosmig}{xosmig}}
+\def\xosmigCf{\lnk{http://codeforces.com/profile/xosmig}{xosmig}}
+\def\meAtLinkedIn{\lnk{https://www.linkedin.com/in/andrei-tonkikh/}{andrei-tonkikh}}
+%\def\andreiTonkikhGmail{\href{mailto:andrei.tonkikh@gmail.com}{\textcolor{black}{\tbf{andrei.tonkikh@gmail.com}}}}
+%\def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
+%\def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
+%\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
 
 \makeatletter
 \DeclareRobustCommand{\regmark}{\raisebox{1ex}{%
@@ -81,7 +88,7 @@
 \begin{center} {\LARGE \textbf{Andrei Tonkikh}} \end{center}
 
 \tabx {l C l}
-\phone Phone: \tbf{+7(904)856-51-29}        && \github GitHub profile: \xosmigGh \\
+\phone Phone: \phoneCallto                  && \github GitHub profile: \xosmigGh \\
 \email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\regmark\space profile: \meAtLinkedIn \\
 \end{tabularx}
 
@@ -113,22 +120,20 @@ My long term goal is to do research and development in one or several of the abo
     \subitem
     Enhancing job scheduling algorithms for YT.
     YT is a distributed batch-processing platform based on Map-Reduce paradigm and
-    running on many thousands of servers.
-    In particular, I'm trying to deal with the problem of resource underutilization caused by fragmentation.
+    running on clusters of many thousands of servers.
   \end{itemize}
 
   \resTime{SWE Intern at Yandex} {July -- December 2018}
     \subitem
     Investigated the problem of resource fragmentation on YT clusters.
     Improved the scheduling simulator -- a tool to simulate the traces from the production scheduler and
-    evaluate scheduling strategies. This project included a good amount of concurrent C++ code.
-    The challenge was to make it efficient yet easy to understand and maintain afterwards.
+    evaluate scheduling strategies.
   \endres
 
   \resTime{SRE Intern at Google} {Summer 2017}
     \subitem
-      Was part of Traffic Team SRE in London. Improved observability of Google Cloud Engine.
-      Designed, implemented and integrated a library for
+      Was part of Traffic Team SRE in London. Improved the observability of Google Cloud Engine
+      by designing, implementing and integrating a library for
       reporting statistics from test instances of GCE components.
   \endres
 \endreslist
@@ -146,12 +151,12 @@ My long term goal is to do research and development in one or several of the abo
 
 \medskip
 Courseworks include, but are not limited to,
-writing \href{https://github.com/xosmig/xo_os}{\textit{multi-threaded OS-kernel}}
-  and a simple \href{https://github.com/xosmig/aucont}{\textit{containerization utility}} in Rust,
+writing \lnk{https://github.com/xosmig/xo_os}{multi-threaded OS-kernel} and a simple
+\lnk{https://github.com/xosmig/aucont}{containerization utility} in Rust,
 creating simple linux kernel modules in C,
-implementing a very basic \href{https://github.com/xosmig/MyLittleMapReduce}{\textit{mapreduce framework}} in Kotlin,
+implementing a very basic \lnk{https://github.com/xosmig/MyLittleMapReduce}{mapreduce framework} in Kotlin,
 a x86 compiler in OCaml,
-and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action game for Android}} in Java.
+and a \lnk{https://github.com/niksaz/blackout}{multiplayer 3D action game for Android} in Java.
 
 \headline{Programming Languages}
 
