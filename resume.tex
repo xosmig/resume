@@ -1,19 +1,20 @@
-\documentclass[8pt,a4paper]{article}
+\documentclass[10pt,a4paper]{extarticle}
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{fix-cm}
-% provides \ul command which is an improved version of \underline
-\usepackage{soul}
+\usepackage{multirow}
+\usepackage{enumitem} % for customizable itemize bullets
+
+% set font family to Latin Modern Sans Serif
+\usepackage{lmodern}
 
 %
 \usepackage{xcolor}
 \usepackage{hyperref}
 
-\usepackage{enumitem} % advanced enumerate, allows me to set leftmargin
-
-\def\lnk#1#2{\href{#1}{\textcolor{blue}{\textit{\ul{#2}}}}}
+\def\lnk#1#2{\href{#1}{\textcolor{blue}{\tbf{\textit{\underline{#2}}}}}}
 
 \def\tbf{\textbf}
 \def\ttt{\texttt}
@@ -32,27 +33,40 @@
 
 \def\headline#1{\medskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\medskip}
 
-\def\reslist{\vspace{-8pt}\begin{enumerate}[leftmargin=0pt]}
-\def\endreslist{\end{enumerate}\vspace{-2pt}}
+\def\reslist{\vspace{-8pt}\begin{itemize}[label={},leftmargin=*]}
+\def\endreslist{\end{itemize}\vspace{-5pt}}
 
-\def\res#1{
-  \item[] #1\normalsize
-  \vspace{-6pt}\begin{itemize}
+\def\resRaw#1{
+  \item #1\normalsize
+  \vspace{-4pt}
 }
 
+\def\res#1{\resRaw {\tbf{#1}}}
+
+\def\resInline#1#2{\resRaw {\tbf{#1} #2}}
+
 \def\resTime#1#2{
-  \res {
-    \begin{tabularx}{480pt}{l R}
-      \tbf{#1} & \textit{#2} \\
-    \end{tabularx}
+  \resRaw {
+    \tbf{#1} \hspace*{\fill} \textit{#2}
+%    \begin{tabularx}{440pt}{l r}
+%      \tbf{#1} & \textit{#2} \\
+%    \end{tabularx}
   }
 }
 
+\def\resLocTime#1#2#3{
+  \resRaw {
+    \tbf{#1}, #2 \hspace*{\fill} \textit{#3}
+%    \begin{tabularx}{480pt}{l R}
+%      \tbf{#1}, #2 & \textit{#3} \\
+%    \end{tabularx}
+  }
+}
+
+\def\beginres{\begin{itemize}[label=\textbullet]}
 \def\endres{\end{itemize}\vspace{-6pt}}
 
-\def\subitem{\vspace{-2pt}\item[]}
-
-\def\subitemB{\vspace{-2pt}\item[\textperiodcentered]}
+\def\subitem{\item}
 
 \def\phone{\includegraphics[height=10pt]{phone.png}\space\space}
 \def\email{\includegraphics[height=10pt]{mail.png}\space\space}
@@ -61,15 +75,10 @@
 \def\linkedin{\includegraphics[height=10pt]{linkedin.png}\space\space}
 
 % links:
-\def\phoneCallto{\lnk{callto:+79048565129}{+7(904)856-51-29}}
-\def\andreiTonkikhGmail{\lnk{mailto:andrei.tonkikh@gmail.com}{andrei.tonkikh@gmail.com}}
-\def\xosmigGh{\lnk{https://github.com/xosmig}{xosmig}}
-\def\xosmigCf{\lnk{http://codeforces.com/profile/xosmig}{xosmig}}
-\def\meAtLinkedIn{\lnk{https://www.linkedin.com/in/andrei-tonkikh/}{andrei-tonkikh}}
-%\def\andreiTonkikhGmail{\href{mailto:andrei.tonkikh@gmail.com}{\textcolor{black}{\tbf{andrei.tonkikh@gmail.com}}}}
-%\def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
-%\def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
-%\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
+\def\andreiTonkikhGmail{\href{mailto:andrei.tonkikh@gmail.com}{\textcolor{black}{\tbf{andrei.tonkikh@gmail.com}}}}
+\def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
+\def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
+\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
 
 \makeatletter
 \DeclareRobustCommand{\regmark}{\raisebox{1ex}{%
@@ -80,6 +89,7 @@
 \newcommand{\comment}[1]{}
 
 \begin{document}
+\sloppy
 
 % Remove page number
 \clearpage
@@ -88,95 +98,144 @@
 \begin{center} {\LARGE \textbf{Andrei Tonkikh}} \end{center}
 
 \tabx {l C l}
-\phone Phone: \phoneCallto                  && \github GitHub profile: \xosmigGh \\
-\email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\regmark\space profile: \meAtLinkedIn \\
+\phone Phone: \tbf{+7(904)856-51-29}        && \github GitHub profile: \xosmigGh \\
+\email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\comment{\regmark\space} profile: \meAtLinkedIn \\
 \end{tabularx}
 
-\headline{Summary}
+%\headline{Summary}
+%
+%MS student. Studying distributed computing and building distributed systems.
 
-I am a 4th year student studying computer science with focus on cloud computing.
-I'm fascinated by distributed systems and multiprocessor programming
-as well as by other kinds of system software such as operating systems and databases.
-My long term goal is to do research and development in one or several of the above-mentioned areas.
+%I am a computer science student fascinated by the topic of distributed systems.
+%I am highly interested in multiprocessor programming, operating systems and system programming in general.
+%I love to dig into large and complex systems to understand how they work on all levels of abstraction.
+%I have experience of production C++ development in an SRE team
+%and a team working on a large distributed computing platfotm.
+%My long term goal is to become a researcher in distributed systems or multiprocessor programming.
 
 \headline{Education}
 
-\reslist
-  \resTime{St. Petersburg branch of the Higher School of Economics} {2018 -- Present}
-    \subitem BS in Computer Science (continuing)
-    \subitem Graduating July 2019
-  \end{itemize}
+%\vspace{-9pt}
 
-  \resTime{St. Petersburg Academic University} {2015 -- 2018}
-    \subitem BS in Computer Science
-  \end{itemize}
+%\begin{center}
+%  \begin{minipage}[t]{0.33333\textwidth}
+%    \raggedright
+%    Higher School of Economics \par
+%    Saint-Petersburg, Russia
+%  \end{minipage}%
+%  \begin{minipage}[t]{0.33333\textwidth}
+%    \centering
+%    MS in Computer Science
+%  \end{minipage}%
+%  \begin{minipage}[t]{0.33333\textwidth}
+%    \raggedleft
+%    Intended \par
+%    2019 -- 2021
+%  \end{minipage}
+%\end{center}
+
+
+%\begin{center}
+%  \begin{minipage}[t]{0.33333\textwidth}
+%    \raggedright
+%    Higher School of Economics
+%  \end{minipage}%
+%  \begin{minipage}[t]{0.33333\textwidth}
+%    \centering
+%    Saint-Petersburg, Russia
+%  \end{minipage}%
+%  \begin{minipage}[t]{0.33333\textwidth}
+%    \raggedleft
+%    Anticipated graduation in June 2019
+%  \end{minipage}
+%\end{center}
+
+\reslist
+  \resLocTime{Higher School of Economics} {Saint-Petersburg, Russia} {2019--Present}
+  \beginres
+    \subitem M.S. in Computer Science (Expected June 2021)
+    \subitem Studying the theory of Distributed Computing
+  \endres
+  \resLocTime{Higher School of Economics} {Saint-Petersburg, Russia} {2018-2019}
+  \beginres
+    \subitem B.S. in Computer Science (continued)
+    \subitem With focus on Cloud Computing
+  \endres
+  \resLocTime{St. Petersburg Academic University} {Saint-Petersburg, Russia} {2015-2018}
+  \beginres
+    \subitem B.S. in Computer Science (transferred)
+  \endres
 \endreslist
 
-\vspace{-8pt}
 \headline{Work Experience}
 
 \reslist
-  \resTime{Junior Software Engineer at Yandex} {January 2019 -- Present}
+  \resLocTime{Junior SWE at Yandex} {Saint-Petersburg, Russia} {Since January 2019}
+  \beginres
     \subitem
-    Enhancing job scheduling algorithms for YT.
-    YT is a distributed batch-processing platform based on Map-Reduce paradigm and
-    running on clusters of many thousands of servers.
-  \end{itemize}
-
-  \resTime{SWE Intern at Yandex} {July -- December 2018}
-    \subitem
-    Investigated the problem of resource fragmentation on YT clusters.
-    Improved the scheduling simulator -- a tool to simulate the traces from the production scheduler and
-    evaluate scheduling strategies.
+      Developed a prototype and currently working on a production implementation of a new
+      fair job scheduling algorithm that allows the service to provide flexible resource guarantees to the users.
+      The algorithm works on large clusters of tens of thousands of servers and allocates resources to many
+      thousands of concurrently running operations.
   \endres
 
-  \resTime{SRE Intern at Google} {Summer 2017}
-    \subitem
-      Was part of Traffic Team SRE in London. Improved the observability of Google Cloud Engine
-      by designing, implementing and integrating a library for
-      reporting statistics from test instances of GCE components.
+  \resLocTime{SWE Intern at Yandex} {Moscow, Russia} {July -- December 2018}
+  \beginres
+    \subitem Enhanced job scheduling algorithms for YT -- the largest distributed computing platform at Yandex.
+  \endres
+
+  \resLocTime{SRE Intern at Google} {London, UK} {July -- September 2017}
+  \beginres
+    \subitem Was part of Traffic Team SRE and improved the black box monitoring system for Google Cloud Engine.
   \endres
 \endreslist
 
-\vspace{-3pt}
-\headline{Most Relevant University Courses}
+%\headline{Selected University Courses}
+%
+%\begin{tabular}{c l}
+%  \textbf{2018 -- 19} & External Memory Algorithms, Big Data Software Engineering, Cryptography \\
+%  \multirow{2}{*}{\textbf{2017 -- 18}}
+%                      & Parallel Programming, Databases, Computer Networks, Statistics, Container Virtualization, \\
+%                      & Linux Kernel Programming, Software Design, Compillers, Software Engineering \\
+%  \textbf{2016 -- 17} & Functional Programming, Probability Theory, Operating Systems, Java \\
+%  \textbf{2015 -- 16} & Algorithms and Data Structures, C++ \\
+%\end{tabular}
 
-\hspace{-14pt}\begin{tabular}{l l}
-  \textbf{Fall 2018}   & \tbf{External Memory Algorithms}, Big Data Software Engineering \\
-  \textbf{Spring 2018} & \tbf{Parallel Programming}, Containerization, Computer Networks, Compillers \\
-  \textbf{Fall 2017}   & \tbf{Linux Kernel}, \tbf{Databases}, Statistics, Software Engineering \\
-  \textbf{2016 -- 17}  & \tbf{Operating Systems}, Functional Programming in Haskell, Java \\
-  \textbf{2015 -- 16}  & Algorithms and Data Structures, C++, Linux Administration \\
-\end{tabular}
+%\medskip
+%Courseworks include
+%writing my own \href{https://github.com/xosmig/xo_os}{\textit{multi-threaded OS-kernel}}
+%  and a simple \href{https://github.com/xosmig/aucont}{\textit{containerization utility}} in Rust,
+%creating simple linux kernel modules in C,
+%implementing a very basic \href{https://github.com/xosmig/MyLittleMapReduce}{\textit{mapreduce framework}} in Kotlin,
+%a x86 compiler in OCaml,
+%and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action game for Android}} in Java.
 
-\medskip
-Courseworks include, but are not limited to,
-writing \lnk{https://github.com/xosmig/xo_os}{multi-threaded OS-kernel} and a simple
-\lnk{https://github.com/xosmig/aucont}{containerization utility} in Rust,
-creating simple linux kernel modules in C,
-implementing a very basic \lnk{https://github.com/xosmig/MyLittleMapReduce}{mapreduce framework} in Kotlin,
-a x86 compiler in OCaml,
-and a \lnk{https://github.com/niksaz/blackout}{multiplayer 3D action game for Android} in Java.
+\headline{Academic Projects}
 
-\headline{Programming Languages}
-
-\hspace{-14pt}\begin{tabular}{l l}
-\tbf{Strongest:}          & C++, C \\
-\tbf{Comfortable:}        & Go, Kotlin, Java, Rust, Python, Bash \\
-\tbf{Limited Experience:} & Scala, R, Haskell, OCaml \\
-\end{tabular}
+\reslist
+  \res{BFT Reconfiguration}
+  \beginres
+    \subitem
+      In an ongoing project I am working on the problem of asynchronous dynamic reconfiguration of quorum systems
+      in arbitrary (a.k.a. Byzantine) fault-tolerant distributed systems.
+  \endres
+\endreslist
 
 \headline{Open Source Contribution}
 
 \reslist
-  \resTime{Packer Builder for VMware vSphere} {Fall 2017}
-    \subitem Automated creation of virtual machines and OS installation
-      in vSphere environment.
+  \resTime{Packer Plugin for vSphere} {Fall 2017}
+  \beginres
+    \subitem
+      Automated creating virtual machines and OS installation in vSphere environment.
+      The project is widely used in JetBrains infrastructure.
+      It is written in Go programming language.
     \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
   \endres
 
   \resTime{Rust Standard Collections Library} {Spring 2016}
-    \subitem Contributed to the implementations of B-Tree and Binary Heap in rust standard library.
+  \beginres
+    \subitem Contributed to the implementations of B-Tree and Binary Heap in Rust standard library.
     \subitem
       \lnk{https://github.com/rust-lang/rust/pull/33947}{github.com/rust-lang/rust/pull/33947}
       \space and \space
@@ -184,20 +243,47 @@ and a \lnk{https://github.com/niksaz/blackout}{multiplayer 3D action game for An
   \endres
 \endreslist
 
+\headline{Programming Languages}
+
+\reslist
+  \resInline{Mostly using} {C++}
+  \resInline{Comfortable with} {C, Go, Kotlin, Java, Rust, Python}
+  \resInline{Familiar with} {Scala, R, Haskell, OCaml}
+\endreslist
+
+%\tabx{l l}
+%\tbf{Strongest:}          & C++, C \\
+%\tbf{Comfortable:}        & Go, Kotlin, Java, Rust, Python \\
+%\tbf{Limited Experience:} & Scala, R, Haskell, OCaml \\
+%\end{tabularx}
+
+%\headline{Other Skills and Technology}
+%
+%Parallel Programming, Distributed Systems, Distributed Computing, Data Management Algorithms,
+%External Memory Algorithms, Linux Kernel Development, Operating Systems, Containerization Technology,
+%Infrastructure Development, Bash, Git, LaTeX, Piper, SQL .
 
 %\headline{Other Experience}
 %
 %\reslist
 %  \res{Programming Competitions}
-%    \subitemB 8th place at Google HashCode 2018 Finals in Dublin.
-%  \endres
-%  \res{High School Programming Competitions}
-%    \subitemB Actively participated and was awarded at many programming competitions in High School.
+%  \beginres
+%    \subitem 8th place in Google HashCode 2018 Finals in Dublin.
+%%    \subitem Awarded in ``All-Russian Olympiad of School Students in Informatics''
+%%      and many others major Russian programming olympiads for high school students.
 %  \endres
 %  \res{Teaching}
-%    \subitemB Taught algorithms and data structures to high school students at ``Summer Informatics School''.
+%  \beginres
+%    \subitem Taught basic algorithms to high school students at ``Summer Informatics School''.
 %  \endres
 %\endreslist
+
+
+%I have experience of competitive programming and teaching basic algorithms to high-school students.
+%
+%\headline{Achievemnts}
+%
+%We took 8th place in Google Hashcode 2018.
 
 
 \end{document}
