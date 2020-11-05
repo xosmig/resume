@@ -6,15 +6,20 @@
 \usepackage{fix-cm}
 \usepackage{multirow}
 \usepackage{enumitem} % for customizable itemize bullets
+\usepackage{amssymb}
 
-% set font family to Latin Modern Sans Serif
-\usepackage{lmodern}
+\usepackage[T1]{fontenc}  % enables \textbf{\textsc{...}} in headlines
+% \usepackage{bold-extra}
+% % set font family to Latin Modern Sans Serif
+% \usepackage{lmodern}
 
 %
 \usepackage{xcolor}
 \usepackage{hyperref}
 
-\def\lnk#1#2{\href{#1}{\textcolor{blue}{\tbf{\textit{\underline{#2}}}}}}
+
+\definecolor{darkblue}{rgb}{0.2, 0.2, 0.5}
+\def\lnk#1#2{\href{#1}{\textcolor{darkblue}{\tbf{\textit{\underline{#2}}}}}}
 
 \def\tbf{\textbf}
 \def\ttt{\texttt}
@@ -31,14 +36,17 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
-\def\headline#1{\medskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{#1}}\quad\hrulefill}\medskip}
+\def\headline#1{\bigskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{\textsc{#1}}}\quad\hrulefill}\bigskip}
 
 \def\reslist{\vspace{-8pt}\begin{itemize}[label={},leftmargin=*]}
+% \def\reslist{\vspace{-8pt}\begin{itemize}[label={},leftmargin=*]}
 \def\endreslist{\end{itemize}\vspace{-5pt}}
 
 \def\resRaw#1{
+  \vspace{4pt}
   \item #1\normalsize
-  \vspace{-5pt}
+  % \vspace{0pt}
+  \vspace{-4pt}
 }
 
 \def\res#1{\resRaw {\tbf{#1}}}
@@ -54,6 +62,12 @@
   }
 }
 
+\def\resLoc#1#2{
+  \resRaw {
+    \tbf{#1}, #2
+  }
+}
+
 \def\resLocTime#1#2#3{
   \resRaw {
     \tbf{#1}, #2 \hspace*{\fill} \textit{#3}
@@ -63,8 +77,10 @@
   }
 }
 
-\def\beginres{\begin{itemize}[label=\textbullet]}
+\def\beginres{\begin{itemize}[label=\raisebox{0.5ex}{\tiny$\bullet$}]}
+% \def\beginres{\begin{itemize}[label=\textbullet]}
 \def\endres{\end{itemize}\vspace{-6pt}}
+% \def\endres{\end{itemize}\vspace{-6pt}}
 
 \def\subitem{\item}
 
@@ -79,6 +95,7 @@
 \def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
 \def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
 \def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
+\def\xosmigGooogleScholar{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
 
 \makeatletter
 \DeclareRobustCommand{\regmark}{\raisebox{1ex}{%
@@ -97,21 +114,24 @@
 
 \begin{center} {\LARGE \textbf{Andrei Tonkikh}} \end{center}
 
+\medskip
 \tabx {l C l}
 \phone Phone: \tbf{+7(904)856-51-29}        && \github GitHub profile: \xosmigGh \\
 \email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\comment{\regmark\space} profile: \meAtLinkedIn \\
 \end{tabularx}
 
-%\headline{Summary}
-%
-%MS student. Studying distributed computing and building distributed systems.
+\headline{Summary}
 
-%I am a computer science student fascinated by the topic of distributed systems.
-%I am highly interested in multiprocessor programming, operating systems and system programming in general.
-%I love to dig into large and complex systems to understand how they work on all levels of abstraction.
-%I have experience of production C++ development in an SRE team
-%and a team working on a large distributed computing platfotm.
-%My long term goal is to become a researcher in distributed systems or multiprocessor programming.
+I am a computer science student with experience in both professional software development and academic research.
+I have found my passion in distributed computing because it is one of the most challenging and versatile areas of computer science. 
+% I am interested in cross-disciplinary research as well.
+% In particular, I think \textbf{cryptography} and \textbf{coding theory} are highly underutilized in distributed computing.
+%
+I am always ready to face new challenges and I am not afraid to take on difficult problems.
+I am motivated by my aspiration to push the boundaries of human knowledge.
+
+% I have experience both in professional software development and in academic research.
+% I am motivated 
 
 \headline{Education}
 
@@ -150,45 +170,108 @@
 %  \end{minipage}
 %\end{center}
 
+% \reslist
+%   \resLocTime{M.S. in Computer Science from the Higher School of Economics} {Saint-Petersburg, Russia} {expected in June 2021}
+%   \resLocTime{B.S in Computer Science from the Higher School of Economics} {Saint-Petersburg, Russia} {2018 -- 2019}
+% \endreslist
+
 \reslist
-  \resLocTime{Higher School of Economics} {Saint-Petersburg, Russia} {2019 -- Present}
+  \resLoc{Ph.D. in CS}{intended}
+  \resLocTime{M.Sc. in CS} {NRU HSE, Saint-Petersburg, Russia} {2019 -- 2021}
   \beginres
-    \subitem M.S. in Computer Science (Expected June 2021)
-    \subitem Studying the theory of Distributed Computing
+    \subitem Graduation expected in June 2021.
   \endres
-  \resLocTime{Higher School of Economics} {Saint-Petersburg, Russia} {2018 -- 2019}
+  \resLocTime{B.Sc. in CS} {NRU HSE, Saint-Petersburg, Russia} {2018 -- 2019}
+  % \beginres
+  %   \subitem B.S. in Computer Science, with focus on \textbf{cloud computing}.
+  % \endres
+\endreslist
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headline{Publications}
+
+\reslist
+  \res{\normalfont{R Guerraoui et al. \textbf{``Dynamic Byzantine Reliable Broadcast.''} OPODIS 2020 \textit{(in press)}}}
+  \res{\normalfont{P Kuznetsov, A Tonkikh. \textbf{``Asynchronous Reconfiguration with Byzantine Failures.''} DISC 2020}}
   \beginres
-    \subitem B.S. in Computer Science (continued)
-    \subitem With focus on Cloud Computing
+    \subitem Video presentation: \lnk{https://www.youtube.com/watch?v=pWgseNI-gIg}{www.youtube.com/watch?v=pWgseNI-gIg}
+    \subitem Extended version: \lnk{https://arxiv.org/pdf/2005.13499.pdf}{arxiv.org/pdf/2005.13499.pdf}
   \endres
-  \resLocTime{St. Petersburg Academic University} {Saint-Petersburg, Russia} {2015 -- 2018}
+  \res{\normalfont{D Collins et al. \textbf{``Online Payments by Merely Broadcasting Messages.''} DSN 2020}}
   \beginres
-    \subitem B.S. in Computer Science (transferred)
+    \subitem Nominated for the best paper award.
+    \subitem Extended version: \lnk{https://arxiv.org/pdf/2004.13184.pdf}{arxiv.org/pdf/2004.13184.pdf}
   \endres
 \endreslist
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headline{Ongoing Projects}
+
+\reslist
+  \res{Fast and Scalable Byzantine Consensus}
+  \beginres
+    \subitem In an ongoing project I am working on a new partially synchronous Byzantine fault-tolerant state machine replication protocol with improved performance characteristics. 
+    %       We use cryptography in a novel way to improve the latency, communication complexity, and fault reselience of the state of the art protocols.
+   %  % \subitem In an ongoing project I am working on improving the latency, communication complexity, and reselience of Byzantine fault-tolerant state machine replication using cryptography.
+  \endres
+\endreslist
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headline{Work Experience}
 
 \reslist
-  \resLocTime{Junior SWE at Yandex} {Saint-Petersburg, Russia} {Since January 2019}
+  \resLocTime{Research Intern at Télécom Paris} {Palaiseau, France} {March 2020 -- April 2020}
   \beginres
     \subitem
-      Developed a prototype and currently working on a production implementation of a new
-      fair job scheduling algorithm that allows the service to provide flexible resource guarantees to the users.
-      The algorithm works on large clusters of tens of thousands of servers and allocates resources to many
-      thousands of concurrently running operations.
+      Studied asynchronous reconfiguration of Byzantine fault-tolerant distributed systems.
   \endres
 
-  \resLocTime{SWE Intern at Yandex} {Moscow, Russia} {July -- December 2018}
+  \resLocTime{Junior SWE at Yandex} {Saint-Petersburg, Russia} {January 2019 -- February 2020}
+  \beginres
+    \subitem
+      Developed a novel job scheduling algorithm for a large scale distributed computing platform. 
+      The new paradigm distributes resources more efficiently and provides more rigorous performance guarantees.
+  \endres
+
+  \resLocTime{SWE Intern at Yandex} {Moscow, Russia} {July 2018 -- December 2018}
   \beginres
     \subitem Enhanced job scheduling algorithms for YT -- the largest distributed computing platform at Yandex.
   \endres
 
-  \resLocTime{SRE Intern at Google} {London, UK} {July -- September 2017}
+  \resLocTime{SRE Intern at Google} {London, UK} {July 2017 -- September 2017}
   \beginres
     \subitem Was part of Traffic Team SRE and improved the black box monitoring system for Google Cloud Engine.
   \endres
 \endreslist
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \headline{Open Source Contribution}
+
+% \reslist
+%   \resTime{Packer Plugin for VMware vSphere} {Fall 2017}
+%   \beginres
+%     \subitem
+%       Automated creating virtual machines and OS installation in vSphere environment.
+%       The project is widely used in JetBrains infrastructure.
+%       It is written in Go programming language.
+%     \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
+%   \endres
+
+%   \resTime{Rust Standard Collections Library} {Spring 2016}
+%   \beginres
+%     \subitem Contributed to the implementations of B-Tree and Binary Heap in Rust standard collections library.
+%     \subitem
+%       \lnk{https://github.com/rust-lang/rust/pull/33947}{github.com/rust-lang/rust/pull/33947}
+%       \space and \space
+%       \lnk{https://github.com/rust-lang/rust/pull/32987}{github.com/rust-lang/rust/pull/32987}
+%   \endres
+% \endreslist
 
 %\headline{Selected University Courses}
 %
@@ -210,45 +293,13 @@
 %a x86 compiler in OCaml,
 %and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action game for Android}} in Java.
 
-\headline{Academic Projects}
-
-\reslist
-  \res{BFT Reconfiguration}
-  \beginres
-    \subitem
-      In an ongoing project I am working on the problem of asynchronous dynamic reconfiguration of quorum systems
-      in arbitrary (a.k.a. Byzantine) fault-tolerant distributed systems.
-  \endres
-\endreslist
-
-\headline{Open Source Contribution}
-
-\reslist
-  \resTime{Packer Plugin for vSphere} {Fall 2017}
-  \beginres
-    \subitem
-      Automated creating virtual machines and OS installation in vSphere environment.
-      The project is widely used in JetBrains infrastructure.
-      It is written in Go programming language.
-    \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
-  \endres
-
-  \resTime{Rust Standard Collections Library} {Spring 2016}
-  \beginres
-    \subitem Contributed to the implementations of B-Tree and Binary Heap in Rust standard library.
-    \subitem
-      \lnk{https://github.com/rust-lang/rust/pull/33947}{github.com/rust-lang/rust/pull/33947}
-      \space and \space
-      \lnk{https://github.com/rust-lang/rust/pull/32987}{github.com/rust-lang/rust/pull/32987}
-  \endres
-\endreslist
-
 \headline{Other Skills}
 
 \reslist
   \resInline{Programming languages:} {C++, C, Go, Kotlin, Java, Rust, Python}
-  \resInline{Skills:} {Storage Systems, Concurrent Programming, Operating Systems, Linux Kernel Programming}
-  \resInline{Technologies:} {TLA+, MapReduce, PostgreSQL, Hadoop, Spark, Hive, LaTeX, SQL, Bash}
+  \resInline{Hard skills:} {Distributed Systems, Databases, Concurrent Programming, Cryptography, Game Theory, \\ 
+  External Memory Algorithms, Operating Systems, Linux Kernel Programming, OS-Level Virtualization}
+  % \resInline{Technologies:} {MapReduce, PostgreSQL, Hadoop, Spark, Hive, LaTeX, SQL, Bash}
   % \resInline{Tools:} {Git, Piper, Svn, Jupyter Notebook}
 \endreslist
 
