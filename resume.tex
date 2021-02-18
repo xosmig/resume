@@ -1,5 +1,6 @@
 \documentclass[10pt,a4paper]{extarticle}
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm, bindingoffset=0cm]{geometry}
+% \usepackage{fullpage}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{graphicx}
@@ -13,12 +14,21 @@
 % % set font family to Latin Modern Sans Serif
 % \usepackage{lmodern}
 
+% \usepackage{textcomp}
+% \usepackage[utf8x]{inputenc}
+
+\usepackage{fdsymbol}
+
 %
 \usepackage{xcolor}
 \usepackage{hyperref}
 
+% \newcommand\whitestar{\unichar{"2606}}
+\newcommand\whitestar{\raisebox{0.5pt}{\ensuremath{\medwhitestar}}}
 
 \definecolor{darkblue}{rgb}{0.2, 0.2, 0.5}
+\definecolor{peach}{RGB}{244,157,144}
+
 \def\lnk#1#2{\href{#1}{\textcolor{darkblue}{\tbf{\textit{\underline{#2}}}}}}
 
 \def\tbf{\textbf}
@@ -36,18 +46,33 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
-\def\headline#1{\bigskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{\textsc{#1}}}\quad\hrulefill}\bigskip}
+\def\headline#1{\vspace{0pt}\bigskip\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{\lrg{\textsc{#1}}}\quad\hrulefill}\bigskip\vspace{-2pt}}
 
-\def\reslist{\vspace{-8pt}\begin{itemize}[label={},leftmargin=*]}
-% \def\reslist{\vspace{-8pt}\begin{itemize}[label={},leftmargin=*]}
-\def\endreslist{\end{itemize}\vspace{-5pt}}
+\newenvironment{reslist}
+  {\vspace{-6pt}
+  \begin{itemize}[label={\textcolor{blue}{$\mathbf{\diamond}$}},leftmargin=12pt]}
+  {\end{itemize}
+  \vspace{-0pt}}
 
-\def\resRaw#1{
-  \vspace{4pt}
+\newcommand{\resRaw}[1]{
+  \vspace{2pt}
   \item #1\normalsize
   % \vspace{0pt}
   \vspace{-4pt}
 }
+
+% \newenvironment{publication}[3]
+%     {\resRaw{{#1} \textbf{``#2''} {#3}}
+%     \beginres}
+%     {\endres}
+\newenvironment{publication}[3]
+  {\resRaw{\textbf{``#2.''} \textit{#3}}
+  \beginres
+  \subres {#1}}
+  {\endres}
+
+
+% \newcommand\publication[3]{\textbf{``#2''} {#3}}
 
 \def\res#1{\resRaw {\tbf{#1}}}
 
@@ -82,20 +107,20 @@
 \def\endres{\end{itemize}\vspace{-6pt}}
 % \def\endres{\end{itemize}\vspace{-6pt}}
 
-\def\subitem{\item}
+\def\subres{\vspace{0pt}\item}
 
-\def\phone{\includegraphics[height=10pt]{phone.png}\space\space}
-\def\email{\includegraphics[height=10pt]{mail.png}\space\space}
-\def\github{\includegraphics[height=10pt]{github.png}\space\space}
-\def\codeforces{\includegraphics[height=10pt]{codeforces_bw.png}\space\space}
-\def\linkedin{\includegraphics[height=10pt]{linkedin.png}\space\space}
+\def\phone{\raisebox{-2pt}{\includegraphics[height=10pt]{mobile.png}}\space}
+\def\email{\raisebox{-2pt}{\includegraphics[height=10pt]{mail.png}}\space}
+\def\github{\raisebox{-2pt}{\includegraphics[height=10pt]{github.png}}\space}
+\def\codeforces{\raisebox{-2pt}{\includegraphics[height=10pt]{codeforces_bw.png}}\space}
+\def\linkedin{\raisebox{-2pt}{\includegraphics[height=10pt]{linkedin.png}}\space}
+\def\scholar{\raisebox{-2pt}{\includegraphics[height=10pt]{scholar.png}}\space}
 
 % links:
 \def\andreiTonkikhGmail{\href{mailto:andrei.tonkikh@gmail.com}{\textcolor{black}{\tbf{andrei.tonkikh@gmail.com}}}}
-\def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
-\def\xosmigCf{\href{http://codeforces.com/profile/xosmig}{\textcolor{black}{\tbf{xosmig}}}}
-\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
-\def\xosmigGooogleScholar{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{andrei-tonkikh}}}}
+\def\xosmigGh{\href{https://github.com/xosmig}{\textcolor{black}{\tbf{GitHub} (xosmig)}}}
+\def\meAtLinkedIn{\href{https://www.linkedin.com/in/andrei-tonkikh/}{\textcolor{black}{\tbf{LinkedIn} (andrei-tonkikh)}}}
+\newcommand{\meAtScholar}{\href{https://scholar.google.com/citations?user=vA1F3fUAAAAJ}{\tbf{Google Scholar} (Andrei Tonkikh)}}
 
 \makeatletter
 \DeclareRobustCommand{\regmark}{\raisebox{1ex}{%
@@ -103,35 +128,51 @@
 }
 \makeatother
 
+\setlength{\parindent}{0pt}
+
 \newcommand{\comment}[1]{}
 
 \begin{document}
 \sloppy
-
-% Remove page number
-\clearpage
-\thispagestyle{empty}
+\pagestyle{empty}  % Remove page number
 
 \begin{center} {\LARGE \textbf{Andrei Tonkikh}} \end{center}
+\vspace{1pt}
 
-\medskip
-\tabx {l C l}
-\phone Phone: \tbf{+7(904)856-51-29}        && \github GitHub profile: \xosmigGh \\
-\email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\comment{\regmark\space} profile: \meAtLinkedIn \\
-\end{tabularx}
+% \medskip
+\begin{center}
+\begin{tabular}{ccc}
+\phone \tbf{+7(904)856-51-29} && \email \andreiTonkikhGmail
+\end{tabular}
+\end{center}
 
-\headline{Summary}
+\begin{center}
+\begin{tabular}{ccccc}
+\linkedin \meAtLinkedIn && \github \xosmigGh && \scholar \meAtScholar
+\end{tabular}
+\end{center}
 
-I am a computer science student with experience in both professional software development and academic research.
-I have found my passion in distributed computing because it is one of the most challenging and versatile areas of computer science. 
-% I am interested in cross-disciplinary research as well.
-% In particular, I think \textbf{cryptography} and \textbf{coding theory} are highly underutilized in distributed computing.
-%
-I am always ready to face new challenges and I am not afraid to take on difficult problems.
-I am motivated by my aspiration to push the boundaries of human knowledge.
+\vspace{-8pt}
 
-% I have experience both in professional software development and in academic research.
-% I am motivated 
+% \tabx {l C l}
+% \phone Phone: \tbf{+7(904)856-51-29}        && \github GitHub profile: \xosmigGh \\
+% \email Email: \andreiTonkikhGmail           && \linkedin LinkedIn\comment{\regmark\space} profile: \meAtLinkedIn \\
+% \end{tabularx}
+
+% \smallskip
+% \headline{Summary}
+
+% I am a computer science student with experience in both professional software development and academic research.
+% % Over the course of my master degree I published multiple papers in top distributed computing venues.
+% I am passionate about blockchain technology as it combines distributed computing, cryptography, game theory, and economics in
+% an astonishing way, and I find each of these four disciplines fascinating.
+% % I have found my passion in distributed computing because it is one of the most challenging and versatile areas of computer science.
+% %
+% % I am interested in cross-disciplinary research as well.
+% % In particular, I think \textbf{cryptography} and \textbf{coding theory} are highly underutilized in distributed computing.
+% %
+% % I am always ready to face new challenges and I am not afraid to take on difficult problems.
+% % I am motivated by my aspiration to push the boundaries of human knowledge.
 
 \headline{Education}
 
@@ -141,7 +182,7 @@ I am motivated by my aspiration to push the boundaries of human knowledge.
 %  \begin{minipage}[t]{0.33333\textwidth}
 %    \raggedright
 %    Higher School of Economics \par
-%    Saint-Petersburg, Russia
+%    Saint Petersburg, Russia
 %  \end{minipage}%
 %  \begin{minipage}[t]{0.33333\textwidth}
 %    \centering
@@ -162,7 +203,7 @@ I am motivated by my aspiration to push the boundaries of human knowledge.
 %  \end{minipage}%
 %  \begin{minipage}[t]{0.33333\textwidth}
 %    \centering
-%    Saint-Petersburg, Russia
+%    Saint Petersburg, Russia
 %  \end{minipage}%
 %  \begin{minipage}[t]{0.33333\textwidth}
 %    \raggedleft
@@ -170,108 +211,161 @@ I am motivated by my aspiration to push the boundaries of human knowledge.
 %  \end{minipage}
 %\end{center}
 
-% \reslist
-%   \resLocTime{M.S. in Computer Science from the Higher School of Economics} {Saint-Petersburg, Russia} {expected in June 2021}
-%   \resLocTime{B.S in Computer Science from the Higher School of Economics} {Saint-Petersburg, Russia} {2018 -- 2019}
-% \endreslist
+% \begin{reslist}
+%   \resLocTime{M.S. in Computer Science from the Higher School of Economics} {Saint Petersburg, Russia} {expected in June 2021}
+%   \resLocTime{B.S in Computer Science from the Higher School of Economics} {Saint Petersburg, Russia} {2018 -- 2019}
+% \end{reslist}
 
-\reslist
-  \resLoc{Ph.D. in CS}{intended}
-  \resLocTime{M.Sc. in CS} {NRU HSE, Saint-Petersburg, Russia} {2019 -- 2021}
+\begin{reslist}
+  \resLocTime{Ph.D. in CS}{intended}{starting 2021}
+  \resLocTime{MSc in CS} {NRU HSE, Saint Petersburg, Russia} {2019 -- 2021}
   \beginres
-    \subitem Graduation expected in June 2021.
+    \subres Graduation expected in June 2021.
   \endres
-  \resLocTime{B.Sc. in CS} {NRU HSE, Saint-Petersburg, Russia} {2018 -- 2019}
+  \resLocTime{BSc in CS} {NRU HSE, Saint Petersburg, Russia} {2018 -- 2019}
   % \beginres
-  %   \subitem B.S. in Computer Science, with focus on \textbf{cloud computing}.
+  %   \subres B.S. in Computer Science, with focus on \textbf{cloud computing}.
   % \endres
-\endreslist
+\end{reslist}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headline{Publications}
 
-\reslist
-  \res{\normalfont{R Guerraoui et al. \textbf{``Dynamic Byzantine Reliable Broadcast.''} OPODIS 2020 \textit{(in press)}}}
-  \res{\normalfont{P Kuznetsov, A Tonkikh. \textbf{``Asynchronous Reconfiguration with Byzantine Failures.''} DISC 2020}}
-  \beginres
-    \subitem Video presentation: \lnk{https://www.youtube.com/watch?v=pWgseNI-gIg}{www.youtube.com/watch?v=pWgseNI-gIg}
-    \subitem Extended version: \lnk{https://arxiv.org/pdf/2005.13499.pdf}{arxiv.org/pdf/2005.13499.pdf}
-  \endres
-  \res{\normalfont{D Collins et al. \textbf{``Online Payments by Merely Broadcasting Messages.''} DSN 2020}}
-  \beginres
-    \subitem Nominated for the best paper award.
-    \subitem Extended version: \lnk{https://arxiv.org/pdf/2004.13184.pdf}{arxiv.org/pdf/2004.13184.pdf}
-  \endres
-\endreslist
+\vspace{-3pt}
+\noindent\textit{(in the field of distributed computing authors are usually listed in \textbf{alphabetical order})}
+\vspace{5pt}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\headline{Ongoing Projects}
+\begin{reslist}
+  \begin{publication}
+  {P. Kuznetsov, \textbf{A. Tonkikh}, Y. X. Zhang}
+  {Revisiting Optimal Resilience of Fast Byzantine Consensus}
+  {submitted to PODC 2021}
+  \end{publication}
 
-\reslist
-  \res{Fast and Scalable Byzantine Consensus}
-  \beginres
-    \subitem In an ongoing project I am working on a new partially synchronous Byzantine fault-tolerant state machine replication protocol with improved performance characteristics. 
-    %       We use cryptography in a novel way to improve the latency, communication complexity, and fault reselience of the state of the art protocols.
-   %  % \subitem In an ongoing project I am working on improving the latency, communication complexity, and reselience of Byzantine fault-tolerant state machine replication using cryptography.
-  \endres
-\endreslist
+  \begin{publication}
+  {R. Guerraoui, \textbf{J. Komatovic}, Petr Kuznetsov, Y.-A. Pignolet, D.-A. Seredinschi, A. Tonkikh}
+  {Dynamic Byzantine Reliable Broadcast}
+  {OPODIS 2020}
+    \subres Extended version: \lnk{https://arxiv.org/pdf/2001.06271v2.pdf}{arxiv.org/pdf/2001.06271v2.pdf}
+  \end{publication}
+
+  \begin{publication}
+  {P. Kuznetsov, \textbf{A. Tonkikh}}
+  {Asynchronous Reconfiguration with Byzantine Failures}
+  {DISC 2020}
+    \subres \textbf{Selected for the special edition of the ``Distributed Computing'' journal.}
+    \subres Video presentation: \lnk{https://www.youtube.com/watch?v=pWgseNI-gIg}{www.youtube.com/watch?v=pWgseNI-gIg}
+    \subres Extended version: \lnk{https://arxiv.org/pdf/2005.13499.pdf}{arxiv.org/pdf/2005.13499.pdf}
+  \end{publication}
+
+  \begin{publication}
+  {D. Collins, R. Guerraoui, J. Komatovic, P. Kuznetsov, M. Monti, M. Pavlovic, Y.-A. Pignolet, D.-A. Seredinschi, A. Tonkikh, \textbf{A. Xygkis}}
+  {Online Payments by Merely Broadcasting Messages}
+  {DSN 2020}
+    \subres \textbf{Nominated for the best paper award.}
+    \subres Extended version: \lnk{https://arxiv.org/pdf/2004.13184.pdf}{arxiv.org/pdf/2004.13184.pdf}
+  \end{publication}
+\end{reslist}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \headline{Ongoing Projects}
+
+% \begin{reslist}
+%   \res{Fast and Scalable Byzantine Consensus}
+%   \beginres
+%     \subres Working on a new partially synchronous Byzantine fault-tolerant state machine replication protocol with improved performance characteristics.
+%     %       We use cryptography in a novel way to improve the latency, communication complexity, and fault reselience of the state of the art protocols.
+%    %  % \subres In an ongoing project I am working on improving the latency, communication complexity, and reselience of Byzantine fault-tolerant state machine replication using cryptography.
+%   \endres
+% \end{reslist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \headline{Work Experience}
 
-\reslist
+\begin{reslist}
   \resLocTime{Research Intern at Télécom Paris} {Palaiseau, France} {March 2020 -- April 2020}
   \beginres
-    \subitem
+    \subres
       Studied asynchronous reconfiguration of Byzantine fault-tolerant distributed systems.
   \endres
 
-  \resLocTime{Junior SWE at Yandex} {Saint-Petersburg, Russia} {January 2019 -- February 2020}
+  \resLocTime{Junior SWE at Yandex} {Saint Petersburg, Russia} {January 2019 -- February 2020}
   \beginres
-    \subitem
-      Developed a novel job scheduling algorithm for a large scale distributed computing platform. 
+    \subres
+      Developed a novel job scheduling algorithm for a large scale distributed computing platform.
       The new paradigm distributes resources more efficiently and provides more rigorous performance guarantees.
   \endres
 
   \resLocTime{SWE Intern at Yandex} {Moscow, Russia} {July 2018 -- December 2018}
   \beginres
-    \subitem Enhanced job scheduling algorithms for YT -- the largest distributed computing platform at Yandex.
+    \subres Enhanced job scheduling algorithms for YT -- the largest distributed computing platform at Yandex.
   \endres
 
   \resLocTime{SRE Intern at Google} {London, UK} {July 2017 -- September 2017}
   \beginres
-    \subitem Was part of Traffic Team SRE and improved the black box monitoring system for Google Cloud Engine.
+    \subres Was part of Traffic Team SRE and improved the black box monitoring system for Google Cloud Engine.
   \endres
-\endreslist
-
+\end{reslist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headline{Programming Languages}
+
+C++, C, Go, Kotlin, Java, Rust, Python, Haskell, Scala
+
+% \begin{reslist}
+%   \resInline{Programming languages:} {C++, C, Go, Kotlin, Java, Rust, Python, Haskell}
+%   \resRaw {Distributed Systems, Databases, Concurrent Programming, External Memory Algorithms, Operating Systems,
+%   Linux Kernel Programming, OS-Level Virtualization, SQL, Git, Piper, Svn}
+%   % \resInline{Technologies:} {MapReduce, PostgreSQL, Hadoop, Spark, Hive, LaTeX, SQL, Bash}
+%   % \resInline{Tools:} {Git, Piper, Svn, Jupyter Notebook}
+% \end{reslist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\headline{Summer Schools}
+
+\begin{reslist}
+  \resLocTime{Summer School on Practice and Theory of Distributed Computing}{Online}{July 2020}
+  % \beginres
+  %   \subres Won a prize for the best questions.
+  % \endres
+
+  \resLocTime{Summer School on Practice and Theory of Distributed Computing}{St. Petersburg}{July 2019}
+  \beginres
+    \subres Won a prize for the best exercise solutions.
+  \endres
+\end{reslist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pagebreak
 % \headline{Open Source Contribution}
 
-% \reslist
-%   \resTime{Packer Plugin for VMware vSphere} {Fall 2017}
+% \begin{reslist}
+%   \resTime{Support for VMware vSphere in HashiCorp Packer} {Fall 2017}
 %   \beginres
-%     \subitem
+%     \subres
 %       Automated creating virtual machines and OS installation in vSphere environment.
-%       The project is widely used in JetBrains infrastructure.
-%       It is written in Go programming language.
-%     \subitem \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
+%       % The project is widely used in JetBrains infrastructure.
+%       % It is written in Go programming language.
+%     \subres Second contributor to the project with more than 500{\whitestar} on GitHub.
+%     \subres \lnk{https://github.com/jetbrains-infra/packer-builder-vsphere}{github.com/jetbrains-infra/packer-builder-vsphere}
 %   \endres
 
 %   \resTime{Rust Standard Collections Library} {Spring 2016}
 %   \beginres
-%     \subitem Contributed to the implementations of B-Tree and Binary Heap in Rust standard collections library.
-%     \subitem
+%     \subres Contributed to the implementations of B-Tree and Binary Heap in Rust standard collections library.
+%     \subres
 %       \lnk{https://github.com/rust-lang/rust/pull/33947}{github.com/rust-lang/rust/pull/33947}
 %       \space and \space
 %       \lnk{https://github.com/rust-lang/rust/pull/32987}{github.com/rust-lang/rust/pull/32987}
 %   \endres
-% \endreslist
+% \end{reslist}
 
 %\headline{Selected University Courses}
 %
@@ -293,23 +387,26 @@ I am motivated by my aspiration to push the boundaries of human knowledge.
 %a x86 compiler in OCaml,
 %and a \href{https://github.com/niksaz/blackout}{\textit{multiplayer 3D action game for Android}} in Java.
 
-\headline{Other Skills}
+% \headline{Programming Competitions}
 
-\reslist
-  \resInline{Programming languages:} {C++, C, Go, Kotlin, Java, Rust, Python}
-  \resInline{Hard skills:} {Distributed Systems, Databases, Concurrent Programming, Cryptography, Game Theory, \\ 
-  External Memory Algorithms, Operating Systems, Linux Kernel Programming, OS-Level Virtualization}
-  % \resInline{Technologies:} {MapReduce, PostgreSQL, Hadoop, Spark, Hive, LaTeX, SQL, Bash}
-  % \resInline{Tools:} {Git, Piper, Svn, Jupyter Notebook}
-\endreslist
+% \begin{reslist}
+%  \res{8th place in Google HashCode 2018 Finals in Dublin}
+%  \beginres
+%    \subres 40 teams (selected out of more than 4000) compete with each other in solving an optimization problem.
+%  \endres
+%  \res{Prize in 2015 ``All-Russian Olympiad in Informatics''}
+%  \beginres
+%    \subres The most prestigious Russian programming competition for high school students. % among top-300 students.
+%  \endres
+% \end{reslist}
 
 %\headline{Programming Languages}
 %
-%\reslist
+%\begin{reslist}
 %  \resInline{Mostly using} {C++}
 %  \resInline{Comfortable with} {C, Go, Kotlin, Java, Rust, Python}
 %  \resInline{Familiar with} {Scala, R, Haskell, OCaml}
-%\endreslist
+%\end{reslist}
 
 %\tabx{l l}
 %\tbf{Strongest:}          & C++, C \\
@@ -323,21 +420,7 @@ I am motivated by my aspiration to push the boundaries of human knowledge.
 %External Memory Algorithms, Linux Kernel Development, Operating Systems, Containerization Technology,
 %Infrastructure Development, Bash, Git, LaTeX, Piper, SQL .
 
-%\headline{Other Experience}
-%
-%\reslist
-%  \res{Programming Competitions}
-%  \beginres
-%    \subitem 8th place in Google HashCode 2018 Finals in Dublin.
-%%    \subitem Awarded in ``All-Russian Olympiad of School Students in Informatics''
-%%      and many others major Russian programming olympiads for high school students.
-%  \endres
-%  \res{Teaching}
-%  \beginres
-%    \subitem Taught basic algorithms to high school students at ``Summer Informatics School''.
-%  \endres
-%\endreslist
-
+% \subres Taught basic algorithms to high school students at ``Summer Informatics School''.
 
 %I have experience of competitive programming and teaching basic algorithms to high-school students.
 %
